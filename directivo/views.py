@@ -1,4 +1,11 @@
 from django.shortcuts import render
+from datetime import datetime
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+
+from operativo.models import AcuerdoOperativa
+from .models import AcuerdoDirectiva, Integrante
 
 # Create your views here.
 def directivo_view(request):
@@ -11,6 +18,7 @@ def crear_acuerdo_directivo(request):
 def historial_acuerdo_directivo(request):
     acuerdos = AcuerdoDirectiva.objects.all().order_by("-creado_en")
     return render(request, "directivo/partials/historial_acuerdo_directivo.html", {"acuerdos": acuerdos})
+
 
 @csrf_exempt
 def guardar_matriz_acuerdos_directiva(request):

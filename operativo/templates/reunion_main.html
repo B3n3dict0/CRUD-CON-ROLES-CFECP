@@ -1,25 +1,21 @@
-{% extends 'operativo/base_operativo.html' %}
+{% extends 'base_operativo.html' %}
 
 {% block title %}Agenda Reunión Operativa CCC Valladolid{% endblock %}
 
 {% block extra_css %}
-<!-- CSS específicos de parciales -->
-<link rel="stylesheet" href="{% static 'css/operativo/info_reunion.css' %}" />
-<link rel="stylesheet" href="{% static 'css/operativo/proposito.css' %}" />
-<link rel="stylesheet" href="{% static 'css/operativo/importancia.css' %}" />
-<link rel="stylesheet" href="{% static 'css/operativo/integrantes.css' %}" />
-<link rel="stylesheet" href="{% static 'css/operativo/agenda_detallada.css' %}" />
+
+
 {% endblock %}
 
 {% block content %}
 <h1>AGENDA DE LA REUNIÓN OPERATIVA DE LA CENTRAL CCC VALLADOLID</h1>
 
-{% include 'operativo/partials/info_reunion.html' %}
-{% include 'operativo/partials/proposito.html' %}
-{% include 'operativo/partials/importancia.html' %}
-{% include 'operativo/partials/integrantes.html' %}
-{% include 'operativo/partials/agenda_detallada.html' %}
+{% include 'partials/info_reunion.html' %}
+{% include 'partials/proposito.html' %}
+{% include 'partials/importancia.html' %}
+{% include 'partials/integrantes.html' %}
+{% include 'partials/agenda_detallada.html' %}
 
 <!-- Modal de notas solo cargado en esta vista -->
-{% include 'operativo/partials/modal_notas.html' %}
+{% include 'partials/modal_notas.html' %}
 {% endblock %}

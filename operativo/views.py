@@ -1,17 +1,22 @@
 from django.shortcuts import render
+from datetime import datetime
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json
+from .models import AcuerdoOperativa, Integrante
 
 # Create your views here.
 
 def operativo_view(request):
     context = {'fecha_actual': datetime.now()}
-    return render(request, 'operativo/reunion_main.html', context)
+    return render(request, 'reunion_main.html', context)
 
 def crear_acuerdo_operativo(request):
-    return render(request, 'operativo/partials/crear_acuerdo_operativo.html')
+    return render(request, 'partials/crear_acuerdo_operativo.html')
 
 def historial_acuerdo_operativo(request):
-    acuerdos = AcuerdoOperativa.objects.all().order_by('-creado_en')
-    return render(request, 'operativo/partials/historial_acuerdo_operativo.html', {'acuerdos': acuerdos})
+    acuerdos = AcuerdoOperativa.objects.all().order_by("-creado_en")
+    return render(request, "partials/historial_acuerdo_operativo.html", {"acuerdos": acuerdos})
 
 @csrf_exempt
 def guardar_matriz_acuerdos_operativa(request):
@@ -53,7 +58,7 @@ def guardar_matriz_acuerdos_operativa(request):
 # ------------------------
 def reunion_main(request):
     integrantes = Integrante.objects.all()
-    return render(request, "operativo/reunion_main.html", {"integrantes": integrantes})
+    return render(request, "reunion_main.html", {"integrantes": integrantes})
 
 @csrf_exempt
 def agregar_integrante(request):

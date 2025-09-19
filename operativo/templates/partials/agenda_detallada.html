@@ -9,23 +9,22 @@
   </div>
 
   <ol id="agendaList">
-    <!-- Secciones incluidas -->
-    {% include 'operativo/partials/agenda_seccion.html' with time="6" section="produccion" title="PRODUCCIÓN (6 MIN)" %}
-    {% include 'operativo/partials/agenda_seccion.html' with time="2" section="mantenimiento" title="MANTENIMIENTO (2 MIN)" %}
-    {% include 'operativo/partials/agenda_seccion.html' with time="3" section="seguridad" title="SEGURIDAD Y AMBIENTAL (3 MIN)" %}
+    {% include 'partials/agenda_seccion.html' with time="6" section="produccion" title="PRODUCCIÓN (6 MIN)" %}
+    {% include 'partials/agenda_seccion.html' with time="2" section="mantenimiento" title="MANTENIMIENTO (2 MIN)" %}
+    {% include 'partials/agenda_seccion.html' with time="3" section="seguridad" title="SEGURIDAD Y AMBIENTAL (3 MIN)" %}
 
-    <!-- Enlace para revisar acuerdos anteriores -->
-   <li data-time="2">
-  <a href="{% url 'historial_acuerdo_operativo' %}" target="_blank">REVISIÓN DE ACUERDOS ANTERIORES (2 MIN)</a>
-</li>
+    <!-- Enlace para acuerdos -->
+    <li data-time="2">
+      <a href="{% url 'historial_acuerdo_operativo' %}" target="_blank">REVISIÓN DE ACUERDOS ANTERIORES (2 MIN)</a>
+    </li>
 
-<li data-time="1">
-  <a href="{% url 'crear_acuerdo_operativo' %}" target="_blank">CREACIÓN DE ACUERDOS NUEVOS (1 MIN)</a>
-  <ul>
-    <li>Revisión de asignación de responsables para actividades prioritarias</li>
-  </ul>
-</li>
+    <li data-time="1">
+      <a href="{% url 'crear_acuerdo_operativo' %}" target="_blank">CREACIÓN DE ACUERDOS NUEVOS (1 MIN)</a>
+      <ul>
+        <li>Revisión de asignación de responsables para actividades prioritarias</li>
+      </ul>
+    </li>
 
-    {% include 'operativo/partials/agenda_seccion.html' with time="1" section="superintendencia" title="SUPERINTENDENCIA GENERAL (1 MIN)" %}
+    {% include 'partials/agenda_seccion.html' with time="1" section="superintendencia" title="SUPERINTENDENCIA GENERAL (1 MIN)" %}
   </ol>
 </section>
