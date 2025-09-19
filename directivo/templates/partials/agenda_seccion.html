@@ -1,0 +1,38 @@
+<li data-time="{{ time }}" data-section="{{ section }}">
+  {{ title }}
+  <button onclick="openNoteModal('{{ section }}')" class="btn-nota">
+    <i class="fa fa-plus"></i> Agregar Nota
+  </button>
+
+  <!-- Lista de notas para esta sección -->
+  <ul id="notes-{{ section }}"></ul>
+
+  {% if section == "produccion" %}
+  <ul>
+    <li>Presentación de problemática y solución </li>
+    <li>Control de licencias emitidas</li>
+  </ul>
+  {% elif section == "mantenimiento" %}
+  <ul>
+    <li>Presentación de problemáticas y solución</li>
+    <li>Control de paquetes, tablero de control, curva de avance.</li>
+  </ul>
+  {% elif section == "gestion" %}
+  <ul>
+    <li>Presentación de problemática y solución de recursos humanos</li>
+    <li>Presentación de problemática y solución de recursos materiales y servicios</li>
+    <li>Presentación de problemática y solución de recursos financieros</li>
+  </ul>
+  </ul>
+  {% elif section == "seguridad" %}
+  <ul>
+    <li>Presentación de problemática y solución de materia de seguridad</li>
+    <li>Presentación de problemática y solución en materia ambiental</li>
+    <li>Presentación de problemática y solución en materia de calidad</li>
+  </ul>
+  {% elif section == "super" %}
+  <ul>
+    <li>Ratificación de las actividades relevantes</li>
+  </ul>
+  {% endif %}
+</li>

@@ -1,0 +1,33 @@
+<li data-time="{{ time }}" data-section="{{ section }}">
+  {{ title }}
+  <button onclick="openNoteModal('{{ section }}')" class="btn-nota">
+    <i class="fa fa-plus"></i> Agregar Nota
+  </button>
+
+  <!-- Lista de notas para esta sección -->
+  <ul id="notes-{{ section }}"></ul>
+
+  {% if section == "produccion" %}
+  <ul>
+    <li>Revisión de producción del día anterior</li>
+    <li>Comparativo Producción Real vs. Programada</li>
+    <li>Plan de producción para el día de hoy</li>
+  </ul>
+  {% elif section == "mantenimiento" %}
+  <ul>
+    <li>Revisión de paros de equipo</li>
+    <li>Estado de las Órdenes de Trabajo de Mantenimiento</li>
+  </ul>
+  {% elif section == "seguridad" %}
+  <ul>
+    <li>Reporte de incidentes y accidentes</li>
+    <li>Estado de acciones correctivas y preventivas</li>
+    <li>Indicadores ambientales</li>
+  </ul>
+  {% elif section == "superintendencia" %}
+  <ul>
+    <li>Comunicados generales</li>
+    <li>Indicadores de desempeño general</li>
+  </ul>
+  {% endif %}
+</li>

@@ -1,0 +1,27 @@
+<section class="integrantes">
+  <h2 class="section-header">INTEGRANTES</h2>
+  <div class="integrantes-controls">
+    <select id="integrantesSelect">
+      <option value="SUPERINTENDENTE GENERAL">SUPERINTENDENTE GENERAL</option>
+      <option value="SUPERINTENDENTE DE PRODUCCIÓN">SUPERINTENDENTE DE PRODUCCIÓN</option>
+      <option value="SUPERINTENDENTE DE MANTENIMIENTO">SUPERINTENDENTE DE MANTENIMIENTO</option>
+      <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+      <option value="JEFES DE DEPARTAMENTOS">JEFES DE DEPARTAMENTOS</option>
+      <option value="SUPERINTENDENTE DE TURNO">SUPERINTENDENTE DE TURNO</option>
+      <option value="JEFES OFICINA">JEFES DE OFICINA</option>
+      <option value="SUPERVISORES">SUPERVISORES</option>
+    </select>
+    <button id="addIntegrante">Agregar</button>
+  </div>
+  <ul id="listaIntegrantes">
+    {% for integrante in integrantes %}
+      <li>
+        {{ integrante.rol }}
+        <button class="eliminar-btn" data-rol="{{ integrante.rol }}">Eliminar</button>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
+
+{% load static %}
+<script src="{% static 'js/integrantes.js' %}"></script>

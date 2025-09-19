@@ -1,0 +1,32 @@
+<section class="agenda">
+  <h2 class="section-header">AGENDA DETALLADA</h2>
+
+  <!-- Cronómetro -->
+  <div class="cronometro-secciones">
+    <span id="currentSection">Sección actual: -</span>
+    <span id="sectionTimer">00:00</span>
+    <button id="nextSection" style="display: none">Siguiente sección</button>
+  </div>
+
+  <ol id="agendaList">
+    <!-- Secciones incluidas -->
+    {% include 'directivo/partials/agenda_seccion.html' with time="5" section="produccion" title="PRODUCCIÓN (5 MIN)" %}
+    {% include 'directivo/partials/agenda_seccion.html' with time="5" section="mantenimiento" title="MANTENIMIENTO (5 MIN)" %}
+    {% include 'directivo/partials/agenda_seccion.html' with time="4" section="gestion" title="GESTION DE RECURSOS (4 MIN)" %}
+    {% include 'directivo/partials/agenda_seccion.html' with time="3" section="seguridad" title="SEGURIDAD, AMBIENTAL Y CALIDAD (3 MIN)" %}
+
+    <!-- Enlace para revisar acuerdos anteriores -->
+   <li data-time="5">
+  <a href="{% url 'historial_acuerdo_directivo' %}" target="_blank">REVISIÓN DE ACUERDOS ANTERIORES (5 MIN)</a>
+</li>
+
+<li data-time="3">
+  <a href="{% url 'crear_acuerdo_directivo' %}" target="_blank">CREACIÓN DE ACUERDOS NUEVOS (3 MIN)</a>
+  <ul>
+    <li>Revisión de asignación de responsables para actividades prioritarias</li>
+  </ul>
+</li>
+
+    {% include 'directivo/partials/agenda_seccion.html' with time="2" section="super" title="SUPERINTENDENCIA GENERAL (2 MIN)" %}
+  </ol>
+</section>

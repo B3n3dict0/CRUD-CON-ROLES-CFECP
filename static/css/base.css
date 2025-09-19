@@ -1,0 +1,130 @@
+/* ---------------------- */
+/* Estilos para el cronómetro */
+/* ---------------------- */
+.cronometro {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.cronometro button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cronometro button:hover {
+    background-color: #45a049;
+}
+
+.cronometro-secciones {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+#nextSection {
+    background-color: #2196F3;
+}
+
+#nextSection:hover {
+    background-color: #0b7dda;
+}
+
+/* Resaltar sección activa */
+#agendaList li.active {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+    padding-left: 6px;
+}
+
+/* ---------------------- */
+/* Estilos generales de contenedor y secciones */
+/* ---------------------- */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.section-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-left: 5px solid #2c3e50;
+}
+
+.info-reunion {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.info-reunion label {
+    font-weight: bold;
+}
+
+/* ---------------------- */
+/* Modal de notas */
+/* ---------------------- */
+.hidden {
+    display: none !important;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none; /* oculto por defecto */
+}
+
+/* Centrado solo cuando está visible */
+.modal:not(.hidden) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 500px;
+}
+
+/* ---------------------- */
+/* Botones de notas */
+/* ---------------------- */
+.btn-nota {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.btn-nota:hover {
+    background-color: #45a049;
+}
+
+.btn-nota i {
+    margin-right: 5px;
+}

@@ -1,0 +1,14 @@
+{% extends 'directivo/base_directiva.html' %}
+
+{% block content %}
+  <h1>AGENDA DE LA REUNIÓN DIRECTIVA DE LA CENTRAL CCC VALLADOLID</h1>
+  
+  {% include 'directivo/partials/info_reunion.html' %}
+  {% include 'directivo/partials/proposito.html' %}
+  {% include 'directivo/partials/importancia.html' %}
+  {% include 'directivo/partials/integrantes.html' %}
+  {% include 'directivo/partials/agenda_detallada.html' %}
+  
+  <!-- Modal de notas solo cargado en esta vista, al final -->
+  {% include 'directivo/partials/modal_notas.html' %}
+{% endblock %}

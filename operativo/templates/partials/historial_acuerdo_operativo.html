@@ -1,0 +1,35 @@
+<h2>Historial de Acuerdos Operativos</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tipo Unidad</th>
+            <th>Acuerdo</th>
+            <th>Unidad Parada</th>
+            <th>Fecha Límite</th>
+            <th>Pendiente</th>
+            <th>Responsable</th>
+            <th>% Avance</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if acuerdos %}
+            {% for a in acuerdos %}
+            <tr>
+                <td>{{ a.numerador }}</td>
+                <td>{{ a.tipo_unidad }}</td>
+                <td>{{ a.descripcion }}</td>
+                <td>{{ a.unidad_parada|yesno:"Sí,No" }}</td>
+                <td>{{ a.fecha_limite }}</td>
+                <td>{{ a.pendiente|yesno:"Sí,No" }}</td>
+                <td>{{ a.responsable }}</td>
+                <td>{{ a.porcentaje_avance }}%</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="8">No hay acuerdos guardados.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>

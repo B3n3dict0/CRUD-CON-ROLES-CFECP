@@ -1,0 +1,13 @@
+<section class="info-reunion">
+  <label>Identificador:</label> <span>REUNIÓN OPERATIVA</span>
+  <label>Fecha:</label>
+  <span id="fecha">{{ fecha_actual|date:"d/m/Y" }}</span>
+  <label>Lugar:</label> <span>Sala de Juntas</span>
+  <label>Duración:</label>
+  <div class="cronometro">
+    <span id="timer">15:00</span>
+    <button id="startTimer">Comenzar</button>
+    <button id="pauseTimer" style="display: none">Pausar</button>
+    <button id="resetTimer">Reiniciar</button>
+  </div>
+</section>
