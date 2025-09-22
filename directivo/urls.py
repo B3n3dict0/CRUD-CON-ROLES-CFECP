@@ -1,3 +1,4 @@
+# urls.py
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
@@ -11,4 +12,7 @@ urlpatterns = [
     path('', views.directivo_view, name='directivo_index'),  # para /usuarios/directivo/
     path('historial-acuerdo/', views.historial_acuerdo_directivo, name='historial_acuerdo_directivo'),
     path('crear-acuerdo/', views.crear_acuerdo_directivo, name='crear_acuerdo_directivo'),
+
+    # Ruta que faltaba
+    path('guardar-matriz-acuerdos-directiva/', views.guardar_matriz_acuerdos_directiva, name='guardar_matriz_acuerdos_directiva'),
 ]

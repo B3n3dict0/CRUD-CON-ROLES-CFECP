@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agenda Reunión Directiva</title>
+
+     <!-- EL CONTENIDO SE INSERTARÁ AQUÍ
+      
+     -->
+    <link rel="stylesheet" href="{% static 'css/directiva.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
+
+  </head>
+  <body>
+    <div class="container">
+      {% block content %}
+    
+      {% endblock %}
+    </div>
+
+    {% include 'directivo/partials/modal_notas.html' %}
+    <script src="{% static 'js/cronometro.js' %}"></script>
+    <script src="{% static 'js/notes.js' %}"></script>
+  </body>
+</html>
