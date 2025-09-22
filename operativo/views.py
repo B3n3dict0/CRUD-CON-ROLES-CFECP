@@ -3,21 +3,24 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
+
 from .models import AcuerdoOperativa, Integrante
 
-# Create your views here.
-
+# Vista principal
 def operativo_view(request):
     context = {'fecha_actual': datetime.now()}
-    return render(request, 'reunion_main.html', context)
+    return render(request, 'operativo/reunion_main.html', context)
 
+# Crear acuerdo
 def crear_acuerdo_operativo(request):
-    return render(request, 'partials/crear_acuerdo_operativo.html')
+    return render(request, 'operativo/partials/crear_acuerdo_operativo.html')
 
+# Historial de acuerdos
 def historial_acuerdo_operativo(request):
     acuerdos = AcuerdoOperativa.objects.all().order_by("-creado_en")
-    return render(request, "partials/historial_acuerdo_operativo.html", {"acuerdos": acuerdos})
+    return render(request, "operativo/partials/historial_acuerdo_operativo.html", {"acuerdos": acuerdos})
 
+# Guardar acuerdos operativos
 @csrf_exempt
 def guardar_matriz_acuerdos_operativa(request):
     if request.method != "POST":
@@ -34,7 +37,9 @@ def guardar_matriz_acuerdos_operativa(request):
         for datos in filas.values():
             unidad_parada = datos.get('unidad_parada', '') == 'on'
             pendiente = datos.get('pendiente', '') == 'on'
-            responsable = datos.get('responsable_manual') if datos.get('responsable_manual') else datos.get('responsable')
+
+            # Usar responsable manual si existe, si no el del select
+            responsable = datos.get('responsable_manual').strip() if datos.get('responsable_manual') else datos.get('responsable')
 
             fecha_limite = datos.get('fecha_limite')
             if fecha_limite:
@@ -48,17 +53,18 @@ def guardar_matriz_acuerdos_operativa(request):
                 pendiente=pendiente,
                 fecha_limite=fecha_limite,
                 responsable=responsable,
+                responsable_manual=datos.get('responsable_manual', '').strip() or None,
                 porcentaje_avance=int(datos.get('porcentaje_avance', 0))
             )
+
         return JsonResponse({'success': True})
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)})
 
-# INTEGRANTES Y REUNIONES
-# ------------------------
+# Integrantes y reuniones
 def reunion_main(request):
     integrantes = Integrante.objects.all()
-    return render(request, "reunion_main.html", {"integrantes": integrantes})
+    return render(request, "operativo/reunion_main.html", {"integrantes": integrantes})
 
 @csrf_exempt
 def agregar_integrante(request):

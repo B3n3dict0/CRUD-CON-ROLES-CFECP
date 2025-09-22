@@ -9,7 +9,6 @@
     <!-- CSS generales -->
     <link rel="stylesheet" href="{% static 'css/operativo.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" /> 
-    <link rel="stylesheet" href="{% static 'css/node_modules/normalize.css' %}" />
 
 
     <!-- CSS específicos por página o parcial -->
@@ -23,7 +22,7 @@
       {% endblock %}
     </div>
 
-    {% include 'partials/modal_notas.html' %}
+    {% include 'operativo/partials/modal_notas.html' %}
 
     <!-- JS generales -->
     <script src="{% static 'js/cronometro.js' %}"></script>

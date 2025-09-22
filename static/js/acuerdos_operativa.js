@@ -41,6 +41,7 @@ function agregarFilaOperativa() {
 
     const select = row.querySelector(".select-responsable");
     const manual = row.querySelector(`[name='responsable_manual_${contadorOperativa}']`);
+
     select.addEventListener("change", function () {
         manual.style.display = select.value === "nuevo" ? "inline-block" : "none";
     });
@@ -59,7 +60,7 @@ function eliminarTodoOperativa() {
 
 function guardarTodoOperativa() {
     const filas = document.querySelectorAll("#acuerdos-body-operativa tr");
-    if (filas.length === 0){
+    if (filas.length === 0) {
         alert("No hay acuerdos para guardar.");
         return;
     }
@@ -76,7 +77,7 @@ function guardarTodoOperativa() {
         });
     });
 
-    fetch("/guardar-matriz-acuerdos-operativa/", {
+    fetch("/usuarios/operativo/guardar-matriz-acuerdos-operativa/", {
         method: "POST",
         headers: {
             "X-CSRFToken": document.querySelector('[name=csrfmiddlewaretoken]').value

@@ -9,9 +9,9 @@
   </div>
 
   <ol id="agendaList">
-    {% include 'partials/agenda_seccion.html' with time="6" section="produccion" title="PRODUCCIÓN (6 MIN)" %}
-    {% include 'partials/agenda_seccion.html' with time="2" section="mantenimiento" title="MANTENIMIENTO (2 MIN)" %}
-    {% include 'partials/agenda_seccion.html' with time="3" section="seguridad" title="SEGURIDAD Y AMBIENTAL (3 MIN)" %}
+    {% include 'operativo/partials/agenda_seccion.html' with time="6" section="produccion" title="PRODUCCIÓN (6 MIN)" %}
+    {% include 'operativo/partials/agenda_seccion.html' with time="2" section="mantenimiento" title="MANTENIMIENTO (2 MIN)" %}
+    {% include 'operativo/partials/agenda_seccion.html' with time="3" section="seguridad" title="SEGURIDAD Y AMBIENTAL (3 MIN)" %}
 
     <!-- Enlace para acuerdos -->
     <li data-time="2">
@@ -25,6 +25,6 @@
       </ul>
     </li>
 
-    {% include 'partials/agenda_seccion.html' with time="1" section="superintendencia" title="SUPERINTENDENCIA GENERAL (1 MIN)" %}
+    {% include 'operativo/partials/agenda_seccion.html' with time="1" section="superintendencia" title="SUPERINTENDENCIA GENERAL (1 MIN)" %}
   </ol>
 </section>

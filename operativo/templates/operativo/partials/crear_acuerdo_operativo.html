@@ -1,7 +1,5 @@
 {% load static %}
-<form method="POST" id="acuerdos-form-operativa" 
-      data-url="{% url 'usuarios:guardar_matriz_acuerdos_operativa' %}" 
-      onsubmit="event.preventDefault(); guardarTodoOperativa();">
+<form method="POST" id="acuerdos-form-operativa" onsubmit="event.preventDefault(); guardarTodoOperativa();">
   {% csrf_token %}
   <table id="acuerdos-table-operativa">
     <thead>
@@ -13,6 +11,7 @@
         <th>Fecha Límite</th>
         <th>Pendiente</th>
         <th>Responsable</th>
+        <th>Responsable Manual</th>
         <th>% Avance</th>
         <th>Acciones</th>
       </tr>

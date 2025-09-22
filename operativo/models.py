@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class AcuerdoOperativa(models.Model):
     numerador = models.IntegerField()
     tipo_unidad = models.CharField(max_length=100)  
@@ -9,25 +8,24 @@ class AcuerdoOperativa(models.Model):
     fecha_limite = models.DateField()
     pendiente = models.BooleanField(default=True)
     responsable = models.CharField(max_length=100)
-    porcentaje_avance = models.PositiveIntegerField()  # solo números positivos
+    responsable_manual = models.CharField(max_length=100, null=True, blank=True)  # ✅ Campo manual agregado
+    porcentaje_avance = models.PositiveIntegerField()
 
     creado_en = models.DateTimeField(auto_now_add=True)
     actualizado_en = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'acuerdos_operativa'  # asegura que sea una tabla separada
+        db_table = 'acuerdos_operativa'
         ordering = ['numerador']
 
     def __str__(self):
         return f"{self.numerador} - {self.descripcion[:20]}"
-    
 
 class Integrante(models.Model):
     rol = models.CharField(max_length=100, unique=True)
 
     class Meta:
-        db_table = 'integrantes_operativo'  # <- tabla diferente
+        db_table = 'integrantes_operativo'
 
     def __str__(self):
         return self.rol
-
