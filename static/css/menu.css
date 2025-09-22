@@ -1,0 +1,55 @@
+.menu-container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(60, 60, 60, 0.08);
+    padding: 32px;
+    max-width: 400px;
+    margin: 40px auto;
+    border: 2px solid #8B0000; /* Rojo moreno */
+}
+
+.menu-container h2 {
+    color: #228B22; /* Verde */
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.welcome-message p {
+    color: #555;
+    background: #f2f2f2;
+    padding: 10px 0;
+    border-radius: 6px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-item {
+    margin-bottom: 18px;
+}
+
+.menu-link {
+    display: block;
+    padding: 14px 0;
+    background: #228B22; /* Verde */
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+    border: 2px solid #8B0000; /* Rojo moreno */
+}
+
+.menu-link:hover {
+    background: #8B0000; /* Rojo moreno */
+    color: #fff;
+}
+
+.menu-link:active {
+    background: #555; /* Gris oscuro */
+}
