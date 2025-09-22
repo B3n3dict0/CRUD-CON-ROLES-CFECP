@@ -65,3 +65,125 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+/* ------------------ DISEÑO GENERAL ------------------ */
+body {
+    background: #f5f5f5;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(44, 62, 80, 0.08);
+    padding: 32px 24px;
+    margin: 32px auto;
+    max-width: 900px;
+}
+
+h1, h2.section-header {
+    color: #388e3c; /* Verde */
+    margin-bottom: 18px;
+    font-weight: 700;
+}
+
+.section-header {
+    border-bottom: 2px solid #388e3c;
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+label {
+    color: #6d6d6d;
+    font-weight: 500;
+}
+
+.cronometro, .cronometro-secciones {
+    background: #e0e0e0;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+button, .btn-nota, .btn-descargar, .eliminar-btn, #addIntegrante {
+    background: #388e3c; /* Verde */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover, .btn-nota:hover, .btn-descargar:hover, .eliminar-btn:hover, #addIntegrante:hover {
+    background: #a3152d; /* Rojo moreno/burdeos */
+}
+
+.eliminar-btn {
+    background: #a3152d; /* Rojo moreno/burdeos */
+}
+
+.eliminar-btn:hover {
+    background: #388e3c; /* Verde */
+}
+
+select, textarea, input {
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 7px;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+ul {
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 16px;
+    list-style: none;
+}
+
+ul li {
+    padding: 6px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+ul li:last-child {
+    border-bottom: none;
+}
+
+a {
+    color: #a3152d; /* Rojo moreno/burdeos */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #388e3c; /* Verde */
+    text-decoration: underline;
+}
+
+/* Resalta la sección actual */
+#currentSection {
+    color: #a3152d;
+    font-weight: bold;
+}
+
+/* Notas */
+.note-textarea {
+    background: #fff;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.note-actions button {
+    margin-right: 8px;
+}
