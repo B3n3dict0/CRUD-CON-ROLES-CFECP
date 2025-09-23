@@ -76,3 +76,30 @@ def agregar_integrante(request):
             return JsonResponse({"success": True, "rol": rol})
         else:
             return JsonResponse({"success": False, "message": "Ya existe este integrante"})
+
+
+
+# INTEGRANTES OPERATIVO
+integrantes_lista = []  # Solo para ejemplo temporal
+
+@csrf_exempt
+def agregar_integrante(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        rol = data.get("rol")
+        if rol in integrantes_lista:
+            return JsonResponse({"success": False, "message": "El rol ya existe"})
+        integrantes_lista.append(rol)
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False, "message": "Método no permitido"})
+
+@csrf_exempt
+def eliminar_integrante(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        rol = data.get("rol")
+        if rol in integrantes_lista:
+            integrantes_lista.remove(rol)
+            return JsonResponse({"success": True})
+        return JsonResponse({"success": False, "message": "No se encontró el rol"})
+    return JsonResponse({"success": False, "message": "Método no permitido"})

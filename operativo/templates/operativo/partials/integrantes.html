@@ -1,5 +1,6 @@
 <section class="integrantes">
   <h2 class="section-header">INTEGRANTES</h2>
+
   <div class="integrantes-controls">
     <select id="integrantesSelect">
       <option value="SUPERINTENDENTE GENERAL">SUPERINTENDENTE GENERAL</option>
@@ -13,6 +14,12 @@
     </select>
     <button id="addIntegrante">Agregar</button>
   </div>
+
+  <div class="integrantes-custom">
+    <input type="text" id="nuevoRol" placeholder="Escribe un rol nuevo" />
+    <button id="addCustomIntegrante">Agregar Rol Personalizado</button>
+  </div>
+
   <ul id="listaIntegrantes">
     {% for integrante in integrantes %}
       <li>
@@ -21,7 +28,17 @@
       </li>
     {% endfor %}
   </ul>
+
+  <!-- Input oculto para capturar todos los roles -->
+  <input type="hidden" name="integrantes_guardados" id="integrantesGuardados" value="">
 </section>
 
 {% load static %}
-<script src="{% static 'js/operativo/integrantes.js' %}"></script>
+
+<!-- URLs dinámicas generadas por Django -->
+<script>
+    const urlAgregar = "{% url 'agregar_integrante' %}";
+    const urlEliminar = "{% url 'eliminar_integrante' %}";
+</script>
+
+<script src="{% static 'js/integrantes_operativo.js' %}"></script>

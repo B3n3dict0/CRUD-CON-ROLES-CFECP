@@ -1,0 +1,39 @@
+<h2>Historial de Acuerdos Directivos</h2>
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Tipo Unidad</th>
+            <th>Acuerdo</th>
+            <th>Unidad Parada</th>
+            <th>Fecha Límite</th>
+            <th>Pendiente</th>
+            <th>Responsable</th>
+            <th>Responsable Manual</th>
+            <th>% Avance</th>
+            <th>Creado En</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if acuerdos %}
+            {% for a in acuerdos %}
+            <tr>
+                <td>{{ a.numerador }}</td>
+                <td>{{ a.tipo_unidad }}</td>
+                <td>{{ a.descripcion }}</td>
+                <td>{{ a.unidad_parada|yesno:"Sí,No" }}</td>
+                <td>{{ a.fecha_limite }}</td>
+                <td>{{ a.pendiente|yesno:"Sí,No" }}</td>
+                <td>{{ a.responsable }}</td>
+                <td>{{ a.responsable_manual }}</td>
+                <td>{{ a.porcentaje_avance }}%</td>
+                <td>{{ a.creado_en|date:"Y-m-d H:i" }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td colspan="10">No hay acuerdos guardados.</td>
+            </tr>
+        {% endif %}
+    </tbody>
+</table>
