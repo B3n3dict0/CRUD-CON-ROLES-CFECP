@@ -1,0 +1,129 @@
+/* === FORMULARIOS DE ACUERDOS (operativa y directiva) === */
+[id^="acuerdos-form-"] {
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 95%;
+}
+
+/* === TABLAS === */
+[id^="acuerdos-table-"] {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+[id^="acuerdos-table-"] thead th {
+  background: #2e7d32; /* verde oscuro */
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+[id^="acuerdos-table-"] td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+[id^="acuerdos-table-"] tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+[id^="acuerdos-table-"] tr:hover {
+  background: #f1f1f1;
+}
+
+/* Inputs, selects y textareas dentro de la tabla */
+[id^="acuerdos-table-"] input,
+[id^="acuerdos-table-"] select,
+[id^="acuerdos-table-"] textarea {
+  width: 95%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+/* === BOTONES DEL FORMULARIO === */
+[id^="acuerdos-form-"] button {
+  margin-right: 8px;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.1s;
+}
+
+[id^="acuerdos-form-"] button:hover {
+  transform: scale(1.05);
+}
+
+[id^="acuerdos-form-"] button[type="button"] {
+  background: #424242; /* gris */
+  color: white;
+}
+
+[id^="acuerdos-form-"] button[type="submit"] {
+  background: #2e7d32; /* verde */
+  color: white;
+}
+
+[id^="acuerdos-form-"] button.delete-all {
+  background: #b71c1c; /* rojo moreno */
+  color: white;
+}
+
+/* === ACCIONES POR FILA === */
+.cell-actions {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+}
+
+.cell-actions .action-btn {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.3s ease, transform 0.1s;
+}
+
+.cell-actions .action-btn.edit {
+  background: #f9a825; /* amarillo */
+  color: white;
+}
+
+.cell-actions .action-btn.delete {
+  background: #c62828; /* rojo */
+  color: white;
+}
+
+.cell-actions .action-btn:hover {
+  transform: scale(1.05);
+}
+
+/* === SEMAFORIZACIÓN DEL % AVANCE === */
+.semaforo {
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 50px;
+  display: inline-block;
+  color: #fff;
+  margin-top: 4px;
+}
+
+/* Estados de colores */
+.semaforo.rojo { background: #d93025; }      /* 0 - 79 */
+.semaforo.amarillo { background: #fbbc04; }  /* 80 - 99 */
+.semaforo.verde { background: #34a853; }     /* 100 */

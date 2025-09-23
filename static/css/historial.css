@@ -1,0 +1,102 @@
+/* Contenedor general del historial */
+.historial-container {
+    width: 95%;
+    margin: 20px auto;
+    background-color: #fff; /* blanco */
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+/* Título y sección */
+.historial-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Barra de filtros / búsqueda */
+.historial-filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.historial-filters input[type="text"],
+.historial-filters select {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Estilo general de la tabla */
+.historial-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+
+/* Bordes, padding y alineación */
+.historial-table th, .historial-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Encabezado */
+.historial-table th {
+    background-color: #e0e0e0; /* gris claro */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Filas alternas */
+.historial-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* blanco / gris muy claro */
+}
+
+/* Hover */
+.historial-table tr:hover {
+    background-color: #d9f0ff; /* azul claro */
+}
+
+/* Semaforización de % Avance (sin tocar la lógica) */
+/* Verde → 100% */
+.avance-verde-total {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+/* Amarillo → 80-99% */
+.avance-amarillo {
+    background-color: #FFC107;
+    color: black;
+    font-weight: bold;
+}
+
+/* Rojo → 0-79% */
+.avance-rojo {
+    background-color: #F44336;
+    color: white;
+    font-weight: bold;
+}
+
+/* Nueva clase opcional: morado/rojo-marrón para alertas */
+.aviso-marron {
+    background-color: #8B0000;
+    color: white;
+    font-weight: bold;
+}
+
+/* Paginación / info adicional debajo de la tabla */
+.historial-info {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
