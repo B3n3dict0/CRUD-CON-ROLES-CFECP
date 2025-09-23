@@ -1,27 +1,88 @@
 <section class="integrantes">
-  <h2 class="section-header">INTEGRANTES</h2>
+  <h2 class="section-header">INTEGRANTES DIRECTIVA</h2>
+
   <div class="integrantes-controls">
-    <select id="integrantesSelect">
-      <option value="SUPERINTENDENTE GENERAL">SUPERINTENDENTE GENERAL</option>
-      <option value="SUPERINTENDENTE DE PRODUCCIÓN">SUPERINTENDENTE DE PRODUCCIÓN</option>
-      <option value="SUPERINTENDENTE DE MANTENIMIENTO">SUPERINTENDENTE DE MANTENIMIENTO</option>
-      <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-      <option value="JEFES DE DEPARTAMENTOS">JEFES DE DEPARTAMENTOS</option>
-      <option value="SUPERINTENDENTE DE TURNO">SUPERINTENDENTE DE TURNO</option>
-      <option value="JEFES OFICINA">JEFES DE OFICINA</option>
-      <option value="SUPERVISORES">SUPERVISORES</option>
+    <select id="integrantesSelectDirectiva">
+      <option value="SUPERINTENDENTE GENERAL">
+        Ing. Sergio Rafael Gonzalez López - Superintendente General E.F.
+      </option>
+      <option value="SUPERINTENDENTE DE PRODUCCIÓN">
+        Ing. Carlos Manuel Gutierrez Cardozo - Superintendente de Producción E.F.
+      </option>
+      <option value="SUPERINTENDENTE DE MANTENIMIENTO">
+        Ing. Héctor Javier Durán Novelo - Superintendente de Mantenimiento E.F.
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Ing. Francisco Jose Lara Moreno - Jefe Depto. Mecánico E.F.
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Ing. Keith Andrés Carama Loría - Jefe Depto. Eléctrico
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Ing. Jose Ahmed Cazares Baeza - Jefe Depto. Instrumentación y Control
+      </option>
+      <option value="ADMINISTRADOR">
+        Lic. Henry Manuel Mendez Contreras - Jefe Depto. Programación y Control E.F.
+      </option>
+      <option value="SUPERVISORES">
+        Ing. Reynaldo Ordaz Santiago - Supervisor Civil
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Ing. Suemy Reyes García - Jefe Depto. Químico
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Joaquín Gustavo Valerio Flores - Jefe Depto. Capacitación y Seguridad E.F.
+      </option>
+      <option value="JEFES DE DEPARTAMENTOS">
+        Nelly del Carmen Martínez Perez - Supervisor Ambiental E.F.
+      </option>
+      <option value="SUPERVISORES">
+        Arq. Elías Delgadillo Vallejo - Supervisor Civil
+      </option>
+      <option value="SUPERINTENDENTE DE TURNO">
+        Ing. Héctor Alejandro Ramos Perez - Supervisor de Operación E.F.
+      </option>
+      <option value="JEFES OFICINA">
+        Lic. Alexis Cruz Novelo - Depto. de Programación y Control
+      </option>
+      <option value="SUPERVISORES">
+        Juan Trinidad Osorno Carrillo - Supervisor Eléctrico E.F.
+      </option>
+      <option value="SUPERVISORES">
+        Gilberto Adrián Moo Coral - Supervisor Eléctrico E.F.
+      </option>
+      <option value="SUPERVISORES">
+        Sergio Uscanga Morales - Supervisor de Instrumentación y Control E.F.
+      </option>
+      <option value="SUPERVISORES">
+        Jesus Antonio Aguilar Carrillo - Supervisor de Instrumentación y Control E.F.
+      </option>
     </select>
-    <button id="addIntegrante">Agregar</button>
+    <button id="addIntegranteDirectiva">Agregar</button>
   </div>
-  <ul id="listaIntegrantes">
-    {% for integrante in integrantes %}
+
+  <div class="integrantes-custom">
+    <input type="text" id="nuevoRolDirectiva" placeholder="Ingrese el nombre y cargo" />
+    <button id="addCustomIntegranteDirectiva">Agregar nuevo integrante</button>
+  </div>
+
+  <ul id="listaIntegrantesDirectiva">
+    {% for integrante in integrantes_directiva %}
       <li>
         {{ integrante.rol }}
         <button class="eliminar-btn" data-rol="{{ integrante.rol }}">Eliminar</button>
       </li>
     {% endfor %}
   </ul>
+
+  <input type="hidden" name="integrantes_guardados_directiva" id="integrantesGuardadosDirectiva" value="">
 </section>
 
 {% load static %}
-<script src="{% static 'js/directivo/integrantes.js' %}"></script>
+
+<script>
+    const urlAgregar = "{% url 'agregar_integrante_directiva' %}";
+    const urlEliminar = "{% url 'eliminar_integrante_directiva' %}";
+</script>
+
+<script src="{% static 'js/integrantes_directiva.js' %}"></script>

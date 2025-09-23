@@ -13,11 +13,11 @@ def directivo_view(request):
     return render(request, 'directivo/reunion_main.html', context)
 
 def crear_acuerdo_directivo(request):
-    return render(request, 'directivo/partials/crear_acuerdo_directivo.html')
+    return render(request, 'directivo/modulo/crear_acuerdo_directivo.html')
 
 def historial_acuerdo_directivo(request):
     acuerdos = AcuerdoDirectiva.objects.all().order_by("-creado_en")
-    return render(request, "directivo/partials/historial_acuerdo_directivo.html", {"acuerdos": acuerdos})
+    return render(request, "directivo/modulo/historial_acuerdo_directivo.html", {"acuerdos": acuerdos})
 
 
 @csrf_exempt
@@ -74,3 +74,29 @@ def agregar_integrante(request):
             return JsonResponse({"success": True, "rol": rol})
         else:
             return JsonResponse({"success": False, "message": "Ya existe este integrante"})
+        
+
+# Lista temporal para directiva
+integrantes_directiva_lista = []
+
+@csrf_exempt
+def agregar_integrante_directiva(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        rol = data.get("rol")
+        if rol in integrantes_directiva_lista:
+            return JsonResponse({"success": False, "message": "El rol ya existe"})
+        integrantes_directiva_lista.append(rol)
+        return JsonResponse({"success": True})
+    return JsonResponse({"success": False, "message": "Método no permitido"})
+
+@csrf_exempt
+def eliminar_integrante_directiva(request):
+    if request.method == "POST":
+        data = json.loads(request.body)
+        rol = data.get("rol")
+        if rol in integrantes_directiva_lista:
+            integrantes_directiva_lista.remove(rol)
+            return JsonResponse({"success": True})
+        return JsonResponse({"success": False, "message": "No se encontró el rol"})
+    return JsonResponse({"success": False, "message": "Método no permitido"})

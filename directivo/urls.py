@@ -15,4 +15,6 @@ urlpatterns = [
 
     # Ruta que faltaba
     path('guardar-matriz-acuerdos-directiva/', views.guardar_matriz_acuerdos_directiva, name='guardar_matriz_acuerdos_directiva'),
+    path("directiva/agregar/", views.agregar_integrante_directiva, name="agregar_integrante_directiva"),
+path("directiva/eliminar/", views.eliminar_integrante_directiva, name="eliminar_integrante_directiva"),
 ]

@@ -13,12 +13,12 @@ def operativo_view(request):
 
 # Crear acuerdo
 def crear_acuerdo_operativo(request):
-    return render(request, 'operativo/partials/crear_acuerdo_operativo.html')
+    return render(request, 'operativo/modulo/crear_acuerdo_operativo.html')
 
 # Historial de acuerdos
 def historial_acuerdo_operativo(request):
     acuerdos = AcuerdoOperativa.objects.all().order_by("-creado_en")
-    return render(request, "operativo/partials/historial_acuerdo_operativo.html", {"acuerdos": acuerdos})
+    return render(request, "operativo/modulo/historial_acuerdo_operativo.html", {"acuerdos": acuerdos})
 
 # Guardar acuerdos operativos
 @csrf_exempt
