@@ -3,8 +3,23 @@ from datetime import datetime
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 import json
-
 from .models import AcuerdoOperativa, Integrante
+from django.http import HttpResponse
+import os
+from django.conf import settings
+from pdfrw import PdfReader, PdfWriter, PageMerge
+from io import BytesIO
+from datetime import datetime
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
+import os
+from django.http import HttpResponse
+from datetime import datetime
+from django.http import HttpResponse
+from django.conf import settings
+from docxtpl import DocxTemplate
+import subprocess  # Para LibreOffice en Linux
+from docx2pdf import convert 
 
 # Vista principal
 def operativo_view(request):
@@ -66,6 +81,8 @@ def reunion_main(request):
     integrantes = Integrante.objects.all()
     return render(request, "operativo/reunion_main.html", {"integrantes": integrantes})
 
+
+
 @csrf_exempt
 def agregar_integrante(request):
     if request.method == "POST":
@@ -93,6 +110,8 @@ def agregar_integrante(request):
         return JsonResponse({"success": True})
     return JsonResponse({"success": False, "message": "Método no permitido"})
 
+
+
 @csrf_exempt
 def eliminar_integrante(request):
     if request.method == "POST":
@@ -102,4 +121,65 @@ def eliminar_integrante(request):
             integrantes_lista.remove(rol)
             return JsonResponse({"success": True})
         return JsonResponse({"success": False, "message": "No se encontró el rol"})
-    return JsonResponse({"success": False, "message": "Método no permitido"})
+    return JsonResponse({"success": False, "message": "Método no permitido"})  
+
+
+def generar_pdf_operativo(request):
+    from django.http import HttpResponse
+    from docxtpl import DocxTemplate
+    import os, subprocess, json
+    from datetime import datetime
+    from docx2pdf import convert
+    from django.conf import settings
+
+    # 1️⃣ Capturar datos del POST
+    fecha_actual = datetime.now().strftime("%d/%m/%Y")
+    fecha_nombre = datetime.now().strftime("%Y%m%d_%H%M%S")  # para nombres únicos
+
+    integrantes_json = request.POST.get("integrantes_guardados", "[]")
+    try:
+        integrantes = json.loads(integrantes_json)
+    except json.JSONDecodeError:
+        integrantes = []
+
+    notas = request.POST.get("notas", "")
+    reglas = request.POST.get("reglas", "")
+
+    # 2️⃣ Rutas de archivos
+    plantilla_path = os.path.join(settings.BASE_DIR, "operativo", "templates", "operativo", "plantillas", "Operativo.docx")
+    backup_dir = os.path.join(settings.BASE_DIR, "operativo", "backups")
+    os.makedirs(backup_dir, exist_ok=True)  # crea la carpeta si no existe
+    temp_docx = os.path.join(backup_dir, f"Operativo_{fecha_nombre}.docx")
+    output_pdf = os.path.join(backup_dir, f"Operativo_{fecha_nombre}.pdf")
+
+    # 3️⃣ Llenar la plantilla Word
+    if not os.path.exists(plantilla_path):
+        return HttpResponse(f"No se encontró la plantilla: {plantilla_path}")
+
+    doc = DocxTemplate(plantilla_path)
+    context = {
+        "fecha": fecha_actual,
+        "integrantes": integrantes,
+        "notas": notas,
+        "acuerdos": reglas,
+    }
+    doc.render(context)
+    doc.save(temp_docx)
+
+    # 4️⃣ Convertir a PDF según el sistema operativo
+    try:
+        if os.name == "nt":  # Windows
+            convert(temp_docx, output_pdf)
+        else:  # Linux/Mac con LibreOffice
+            subprocess.run([
+                "libreoffice", "--headless", "--convert-to", "pdf", temp_docx, "--outdir",
+                backup_dir
+            ], check=True)
+    except Exception as e:
+        return HttpResponse(f"Error al convertir a PDF: {str(e)}")
+
+    # 5️⃣ Leer PDF y devolver como descarga
+    with open(output_pdf, "rb") as f:
+        response = HttpResponse(f.read(), content_type="application/pdf")
+        response["Content-Disposition"] = f'attachment; filename="Operativo_{fecha_nombre}.pdf"'
+        return response

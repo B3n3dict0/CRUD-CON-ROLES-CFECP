@@ -15,4 +15,7 @@ urlpatterns = [
 
     # Integrantes y reuniones
     path("reunion/", views.reunion_main, name="reunion_main"),
+    
+    path('operativo/pdf/', views.generar_pdf_operativo, name='generar_pdf_operativo'),
+
 ]

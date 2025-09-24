@@ -98,3 +98,8 @@ function guardarTodoOperativa() {
         alert("Error al guardar acuerdos. Revisa la consola.");
     });
 }
+
+
+
+
+

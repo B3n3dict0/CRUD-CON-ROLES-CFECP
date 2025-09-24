@@ -1,0 +1,64 @@
+<!-- templates/operativo/operativo_pdf.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Reunión Operativo</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    h2 { border-bottom: 1px solid #000; margin-top: 20px; }
+    ul { margin-bottom: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { border: 1px solid #000; padding: 5px; }
+  </style>
+</head>
+<body>
+  <h1>Reunión Operativo</h1>
+  <p>Fecha: {{ fecha_actual }}</p>
+
+  {% if integrantes %}
+  <h2>Integrantes</h2>
+  <ul>
+    {% for i in integrantes %}
+      <li>{{ i }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if notas %}
+  <h2>Desarrollo de notas</h2>
+  {% for seccion, lista_notas in notas.items %}
+    {% if lista_notas %}
+      <h3>{{ seccion|title }}</h3>
+      <ul>
+        {% for nota in lista_notas %}
+          <li>{{ nota }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  {% if acuerdos %}
+  <h2>Nuevas Reglas / Acuerdos</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>#</th><th>Tipo Unidad</th><th>Acuerdo</th><th>Responsable</th><th>% Avance</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for a in acuerdos %}
+      <tr>
+        <td>{{ a.numerador }}</td>
+        <td>{{ a.tipo_unidad }}</td>
+        <td>{{ a.descripcion }}</td>
+        <td>{{ a.responsable }}</td>
+        <td>{{ a.porcentaje_avance }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</body>
+</html>

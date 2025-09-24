@@ -28,9 +28,12 @@
     {% include 'operativo/partials/agenda_seccion.html' with time="1" section="superintendencia" title="SUPERINTENDENCIA GENERAL (1 MIN)" %}
   </ol>
 
-  <!-- ...existing code... -->
-<button onclick="downloadSection('{{ section }}')" class="btn-descargar">
-  <i class="fa fa-download"></i> Descargar Sección
-</button>
-<!-- ...existing code... -->
+  <form method="POST" action="{% url 'generar_pdf_operativo' %}">
+    {% csrf_token %}
+    <input type="hidden" name="integrantes_guardados" id="integrantesGuardados">
+    <input type="hidden" name="notas" id="notas">
+    <input type="hidden" name="reglas" id="reglas">
+    <button type="submit">Generar PDF</button>
+</form>
+
 </section>
